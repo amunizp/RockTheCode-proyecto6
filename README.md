@@ -46,10 +46,8 @@ DB_URL=mongodb+srv://<user name>:<password>@<cluster nameID>.mongodb.net/?retryW
 1. Install [VSCodium](https://github.com/VSCodium/vscodium?tab=readme-ov-file)
 2. Install NVM and then Node.jsnvm
 
-```
-install NVM: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
-install node: https://nodejs.org/en/download/package-manager
-```
+install [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+install [node](https://nodejs.org/en/download/package-manager)
 
 2. Check the Package.json dependencies and install the dependencies with the following commands on the root install folder
 
