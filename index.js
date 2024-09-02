@@ -19,6 +19,7 @@ app.use('*', (req, res, next) => {
 })
 
 // ponemos a escuchar a nuestro servidor
-app.listen(3000, () => {
+port = 3000
+app.listen(port, () => {
   console.log('http://localhost:3000')
 })
