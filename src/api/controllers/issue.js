@@ -1,3 +1,4 @@
+const { courts } = require('../models/flat')
 const Issue = require('../models/issue')
 
 //CREATE
@@ -15,6 +16,22 @@ const getIssue = async (req, res, next) => {
   try {
     const allIssues = await Issue.find().populate('flat')
     return res.status(302).json(allIssues)
+  } catch (error) {
+    return res.status(400).json('Error Reading')
+  }
+}
+
+//READ Courts
+const getCourtIssue = async (req, res, next) => {
+  try {
+    const { court } = req.params
+    if (courts.includes(court)) {
+      console.log('si Court esta Courts')
+      const allCourtIssues = await Issue.find({ person: 'Mary' }).populate(
+        'flat'
+      )
+      return res.status(302).json(allCourtIssues)
+    }
   } catch (error) {
     return res.status(400).json('Error Reading')
   }
@@ -50,5 +67,6 @@ module.exports = {
   postIssue,
   getIssue,
   updateIssue,
-  deleteIssue
+  deleteIssue,
+  getCourtIssue
 }

@@ -35,4 +35,4 @@ const flatSchema = new mongoose.Schema(
 )
 
 const Flat = mongoose.model('flats', flatSchema, 'flats')
-module.exports = Flat
+module.exports = { Flat, courts, flatSchema }
