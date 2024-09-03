@@ -8,9 +8,10 @@ const express = require('express')
 const { connectDB } = require('./src/config/db')
 const addRoutes = require('./src/api/routes/add')
 const issuesRoutes = require('./src/api/routes/issue')
+const flatsRoutes = require('./src/api/routes/flat')
 // ejecutamos express y lo guardamos en una variable
 const app = express()
-
+//connectamos BBDD
 connectDB()
 
 // req.body de formato json
@@ -18,7 +19,7 @@ app.use(express.json())
 
 app.use('/api/v1/additions', addRoutes)
 app.use('/api/v1/issues', issuesRoutes)
-
+app.use('/api/v1/flats', flatsRoutes)
 app.use('*', (req, res, next) => {
   return res.status(404).json('Route not found')
 })

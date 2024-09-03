@@ -12,7 +12,7 @@ The problem is that the historical issues are lost between neighbours and some o
 
 A neighbour raises an issue and describes it.
 
-authour: string
+person: string
 Description: string
 ref flat Optional
 ref issueUpdate optional
@@ -24,12 +24,51 @@ court : string
 
 Another neighbour might want to update an existing issue.
 
-authour: string
-descrition: string
+Person: string
+description: string
 
 ## Reach goal
 
-Give a list of the issues attached to a particular flat.
+Give a list of the issues attached to a particular court.
+
+# Example use
+
+1. Create a flat
+
+```
+{
+  "number":10,
+  "court": "Byron"
+}
+```
+
+Record the \_id for this flat for example
+
+```
+66d70bcccf5d3354794c4b13
+```
+
+2. Create an issue with the optional field of the flat address:
+
+```
+{
+    "person": "Stephen",
+    "description": "I have Damp going up the wall",
+    "flat": "66d70bcccf5d3354794c4b13"
+}
+```
+
+3. View all the issues:
+
+```
+http://localhost:3000/api/v1/issues
+```
+
+4. View all issues from a particular flat:
+
+```
+http://localhost:3000/api/v1/issues
+```
 
 # Install process
 

@@ -13,7 +13,7 @@ const postIssue = async (req, res, next) => {
 //READ
 const getIssue = async (req, res, next) => {
   try {
-    const allIssues = await Issue.find().populate('person')
+    const allIssues = await Issue.find().populate('flat')
     return res.status(302).json(allIssues)
   } catch (error) {
     return res.status(400).json('Error Reading')
