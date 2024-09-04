@@ -1,6 +1,6 @@
 const { default: mongoose } = require('mongoose')
-const { validate } = require('./issue')
-// There are only certain amount of courts and certain amount of Courts I need to validate that somehow.
+// const { validate } = require('./issue')
+// There are only certain amount of flats and certain amount of Courts I need to validate that somehow.
 //TODO Maybe this model should be called ParkleysModel, that way if another estate needs it they can use something different?
 courts = [
   'Milton',
@@ -35,4 +35,4 @@ const flatSchema = new mongoose.Schema(
 )
 
 const Flat = mongoose.model('flats', flatSchema, 'flats')
-module.exports = { Flat, courts, flatSchema }
+module.exports = { Flat, courts }

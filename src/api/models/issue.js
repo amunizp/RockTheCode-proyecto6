@@ -1,5 +1,5 @@
 const { default: mongoose } = require('mongoose')
-const { Flat, flatSchema } = require('./flat')
+// const { Flat, flatSchema } = require('./flat')
 
 const issueSchema = new mongoose.Schema(
   {

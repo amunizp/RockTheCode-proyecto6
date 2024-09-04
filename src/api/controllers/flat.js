@@ -1,4 +1,6 @@
-const Flat = require('../models/flat')
+// const Flat = require('../models/flat')
+
+const { Flat } = require('../models/flat')
 
 //? CRUD - CREATE - READ - UPDATE - DELETE
 
@@ -20,10 +22,15 @@ const postFlat = async (req, res, next) => {
 //! READ
 const getFlats = async (req, res, next) => {
   try {
+    console.log('Estoy buscando todos los Flats')
     const allFlats = await Flat.find()
+    console.log('Ya intenté encontrar todos los flats')
     return res.status(200).json(allFlats)
   } catch (error) {
-    return res.status(400).json('Error while Reading')
+    console.log(error)
+    console.error()
+
+    return res.status(400).json('Error when reading')
   }
 }
 

@@ -67,6 +67,6 @@ module.exports = {
   postIssue,
   getIssue,
   updateIssue,
-  deleteIssue,
-  getCourtIssue
+  deleteIssue
+  // getCourtIssue
 }
