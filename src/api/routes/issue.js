@@ -3,7 +3,8 @@ const {
   getIssue,
   updateIssue,
   deleteIssue,
-  getCourtIssue
+  // getCourtIssue,
+  getPersonIssue
 } = require('../controllers/issue')
 
 const issuesRoutes = require('express').Router()
@@ -13,5 +14,5 @@ issuesRoutes.get('/', getIssue)
 issuesRoutes.put('/:id', updateIssue)
 issuesRoutes.delete('/:id', deleteIssue)
 // issuesRoutes.get('/court/:court', getCourtIssue)
-
+issuesRoutes.get('/getPersons/:person', getPersonIssue)
 module.exports = issuesRoutes

@@ -14,7 +14,10 @@ const postIssue = async (req, res, next) => {
 //READ
 const getIssue = async (req, res, next) => {
   try {
-    const allIssues = await Issue.find().populate('flat')
+    const allIssues = await Issue.find()
+      .populate('flat')
+      .populate('update')
+      .populate('parent')
     return res.status(302).json(allIssues)
   } catch (error) {
     return res.status(400).json('Error Reading')
@@ -34,6 +37,19 @@ const getCourtIssue = async (req, res, next) => {
     }
   } catch (error) {
     return res.status(400).json('Error Reading')
+  }
+}
+//READ person
+const getPersonIssue = async (req, res, next) => {
+  try {
+    const { person } = req.params
+    const allPersonIssues = await Issue.find({ person: person })
+      .populate('flat')
+      .populate('update')
+      .populate('parent')
+    return res.status(302).json(allPersonIssues)
+  } catch (error) {
+    return res.status(400).json('Error Reading persons')
   }
 }
 
@@ -67,6 +83,7 @@ module.exports = {
   postIssue,
   getIssue,
   updateIssue,
-  deleteIssue
+  deleteIssue,
+  getPersonIssue
   // getCourtIssue
 }

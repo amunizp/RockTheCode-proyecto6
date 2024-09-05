@@ -35,40 +35,113 @@ Give a list of the issues attached to a particular court.
 
 1. Create a flat
 
-```
-{
-  "number":10,
-  "court": "Byron"
-}
-```
+   ```
+   POST:http://localhost:3000/api/v1/flats
+   ```
 
-Record the \_id for this flat for example
+   In the Body
 
-```
-66d70bcccf5d3354794c4b13
-```
+   ```
+   {
+     "number":10,
+     "court": "Byron"
+   }
+   ```
+
+   Record the \_id for this flat for example
+
+   ```
+   66d70bcccf5d3354794c4b13
+   ```
 
 2. Create an issue with the optional field of the flat address:
 
-```
-{
-    "person": "Stephen",
-    "description": "I have Damp going up the wall",
-    "flat": "66d70bcccf5d3354794c4b13"
-}
-```
+   ```
+   GET: http://localhost:3000/api/v1/issues
+   ```
+
+   Body:
+
+   ```
+   {
+       "person": "Stephen",
+       "description": "I have Damp going up the wall",
+       "flat": "66d70bcccf5d3354794c4b13"
+   }
+   ```
 
 3. View all the issues:
 
-```
-http://localhost:3000/api/v1/issues
-```
+   ```
+   GET:http://localhost:3000/api/v1/issues
+   ```
 
-4. View all issues from a particular flat:
+4. TODO: View all issues from a particular flat:
 
-```
-http://localhost:3000/api/v1/issues
-```
+   ```
+   GET:http://localhost:3000/api/v1/issues/<exampleFlat>
+   ```
+
+5. Create an update for an issue.
+
+   First find the parent issue and record the ID.
+   TODO (search by name)
+
+   ```
+   {
+     "person": "Carlos",
+     "description": "My door leaking",
+     "_id": "66d9664f5958b1e55d2e699b",
+     "createdAt": "2024-09-05T08:05:35.298Z",
+     "updatedAt": "2024-09-05T08:05:35.298Z",
+     "__v": 0
+   }
+   ```
+
+   then create a new issue adding the reference to the parent
+
+   ```
+   POST:http://localhost:3000/api/v1/issues
+   ```
+
+   Body
+
+   ```
+     {
+       "_id": "66d9679c5958b1e55d2e699e",
+       "person": "Andres",
+       "description": "I checked Carlos door it was not leaking",
+       "parent": "66d9664f5958b1e55d2e699b",
+       "createdAt": "2024-09-05T08:11:08.769Z",
+       "updatedAt": "2024-09-05T08:11:08.769Z",
+       "__v": 0
+     }
+   ```
+
+   Tu update use the put command
+
+   ```
+   PUT: http://localhost:3000/api/v1/issues/66d9664f5958b1e55d2e699b
+   ```
+
+   body:
+
+   ```
+   {
+   "update":"66d9679c5958b1e55d2e699e"
+   }
+
+   ```
+
+6. Find what each person has submitted
+   For example to find all the issues raised by Carlos:
+   ```
+   GET:http://localhost:3000/api/v1/issues/getPersons/Carlos
+   ```
+
+## Creating a seed
+
+Remember it will [drop](https://xkcd.com/327/) your table before you upload the seed!
 
 # Install process
 
