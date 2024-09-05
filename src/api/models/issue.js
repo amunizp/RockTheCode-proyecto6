@@ -7,7 +7,7 @@ const issueSchema = new mongoose.Schema(
     description: { type: String, required: true },
     flat: { type: mongoose.Types.ObjectId, required: false, ref: 'flats' },
     //apartment: flatSchema //store as subdocument
-    update: { type: mongoose.Types.ObjectId, required: false, ref: 'issues' },
+    update: [{ type: mongoose.Types.ObjectId, required: false, ref: 'issues' }],
     parent: { type: mongoose.Types.ObjectId, required: false, ref: 'issues' }
   },
   {

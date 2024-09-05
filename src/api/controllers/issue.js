@@ -54,13 +54,38 @@ const getPersonIssue = async (req, res, next) => {
 }
 
 //UPDATE
+// Al actualizar una colección que tenga un array de datos relacionados, no queremos que estos datos se borren
+// Evitaremos duplicados en el array relacionado
 const updateIssue = async (req, res, next) => {
   try {
     const { id } = req.params
     const newIssue = new Issue(req.body)
+    if (req.body.update.length > 0) {
+      console.log(
+        'You want to append an update, let me check to see if the issue had any previous updates'
+      )
+      const docToBeUpdated = await Issue.findById(id)
+      if (docToBeUpdated.update.length > 0) {
+        console.log('yes there is already something there!')
+        console.log(
+          'I found that some are in common',
+          docToBeUpdated.update.some((r) => req.body.update.includes(r))
+        )
+        console.log('in the database: ', docToBeUpdated.update)
+        console.log('what you gave me', req.body.update)
+
+        if (docToBeUpdated.update.some((r) => req.body.update.includes(r))) {
+          console.log(
+            'I found that some are in common',
+            docToBeUpdated.update.some((r) => req.body.update.includes(r))
+          )
+        }
+      }
+    }
     newIssue._id = id
     const issueUpdated = await Issue.findByIdAndUpdate(id, newIssue, {
-      new: true
+      new: true,
+      runValidators: true
     })
     return res.status(214).json(issueUpdated)
   } catch (error) {
