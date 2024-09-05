@@ -128,7 +128,7 @@ Give a list of the issues attached to a particular court.
 
    ```
    {
-   "update":"66d9679c5958b1e55d2e699e"
+   "update":["66d9679c5958b1e55d2e699e"]
    }
 
    ```
