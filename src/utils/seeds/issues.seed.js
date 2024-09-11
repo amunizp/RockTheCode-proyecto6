@@ -1,6 +1,6 @@
 require('dotenv').config()
-const Issue = require('../../src/api/models/issue')
-const { issues } = require('../../src/data/issues')
+const Issue = require('../../api/models/issue')
+const { issues } = require('../../data/issues')
 const mongoose = require('mongoose')
 
 // En este caso, nos conectaremos de nuevo a nuestra base de datos
